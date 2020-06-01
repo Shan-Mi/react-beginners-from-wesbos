@@ -15,17 +15,34 @@ class App extends React.Component {
   //listening
   componentDidMount() {
     const { params } = this.props.match;
+    // First reinstate our localStorage
+    const localStorageRef = localStorage.getItem(params.storeId);
+    //console.log(localStorageRef);
+    // Then take that and set it to a state
+
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: "fishes",
     });
   }
 
+  componentDidUpdate() {
+    // console.log(this.state.order);
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    );
+    // console.log("It updated");
+  }
+
   //remove listening, otherwise there might be memory leaking issues
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-  
+
   // state only lives in this component
   addFish = (fish) => {
     // 1. Take a copy of the existing state
@@ -34,6 +51,18 @@ class App extends React.Component {
     fishes[`fish${Date.now()}`] = fish;
     // 3. Set the new fishes object to state
     this.setState({ fishes });
+  };
+
+  //get data which received from EditFishForm
+  // key: we know which fish got updated
+  updateFish = (key, updatedFish) => {
+    // 1. take a copy of the current copy
+    const fishes = { ...this.state.fishes };
+    // 2. update that state
+    fishes[key] = updatedFish;
+    // 3. set that to state
+    this.setState({ fishes });
+    // this.setState{ fishes: fishes }
   };
 
   loadSampleFishes = () => {
@@ -70,7 +99,9 @@ class App extends React.Component {
         <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
+          updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
         />
       </div>
     );
