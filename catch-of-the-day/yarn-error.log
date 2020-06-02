@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js build
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Shan\bin;C:\Python38\Scripts;C:\Python38;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\Program Files\SourceGear\Common\DiffMerge;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Users\Shan\AppData\Local\Microsoft\WindowsApps;C:\Users\Shan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Shan\AppData\Local\GitHubDesktop\bin;C:\Users\Shan\AppData\Local\Yarn\bin;C:\Users\Shan\AppData\Roaming\npm
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\Shan\Develop\React-For-Beginners-Starter-Files\catch-of-the-day\package.json: Unexpected token } in JSON at position 922
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "cotd",
+    "version": "0.0.3",
+    "private": true,
+    "devDependencies": {
+      "concurrently": "4.1.0",
+      "react-scripts": "3.4.1"
+    },
+    "dependencies": {
+      "autoprefixer-stylus": "0.14.0",
+      "firebase": "^7.6.0",
+      "prop-types": "^15.6.0",
+      "re-base": "4.0.0",
+      "react": "^16.6.3",
+      "react-dom": "^16.6.3",
+      "react-router-dom": "^4.2.2",
+      "react-transition-group": "^2.2.1",
+      "serve": "^10.1.2",
+      "stylus": "0.54.5"
+    },
+    "scripts": {
+      "dev": "react-scripts start",
+      "start": "react-scripts start",
+      "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
+      "build": "react-scripts build",
+      "eject": "react-scripts eject",
+      "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+      "now-build": "npm run build && mv build dist",
+      "styles:watch": "npm run styles -- -w"
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

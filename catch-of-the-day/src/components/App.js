@@ -5,6 +5,7 @@ import Inventory from "./Inventory";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 import base from "../base";
+import style from "../dist/scss/style.scss";
 
 class App extends React.Component {
   state = {
