@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types"; // to check if the right type of props is passed in, if failed they will see that in console
+// or we can use flow / typescript...
 
 const Header = (props) => (
   <header className="top">
@@ -15,5 +17,9 @@ const Header = (props) => (
     </h3>
   </header>
 );
+
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired,
+};
 
 export default Header;
