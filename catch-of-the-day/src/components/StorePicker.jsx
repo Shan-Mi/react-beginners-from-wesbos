@@ -8,12 +8,14 @@ class StorePicker extends React.Component {
   };
   
   myInput = React.createRef();
+  // create an empty ref
 
+  // declare a property which will be binded to an instance rather than nothing
   goToStore = (e) => {
     e.preventDefault();
     // 1. get text from input
     const storeName = this.myInput.current.value;
-    console.log(this.myInput.current.value);
+    // console.log(this.myInput.current.value);
     // don't touch the DOM
 
     // 2. change page to /store/whatever they entered
